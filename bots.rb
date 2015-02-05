@@ -1,4 +1,8 @@
 require 'twitter_ebooks'
+require 'yaml'
+require './britain_logic.rb'
+
+
 
 # This is an example bot definition with event handlers commented out
 # You can define and instantiate as many bots as you like
@@ -38,7 +42,7 @@ class MyBot < Ebooks::Bot
 end
 
 # Make a MyBot and attach it to an account
-MyBot.new("british-updates") do |bot|
+MyBot.new("updates") do |bot|
   config = YAML.load_file('secrets.yml')
   bot.access_token = config['access_token']
   bot.access_token_secret = config['access_token_secret']
