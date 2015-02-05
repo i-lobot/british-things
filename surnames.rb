@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 
-class ScrapeSurnames
+class Surnames
 
   attr_accessor :names
 
