@@ -49,11 +49,11 @@ class Surnames
     @number = Random.new.rand(0..@sum-1)
     count = 0
     idx = 0
-    while @number > count  do
+    while @number > count do
       count += @names[idx][1]
       idx+=1
     end
-    return @names[idx]
+    return @names[idx][0]
   end
 
   private
