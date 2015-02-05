@@ -9,13 +9,14 @@ class ScrapePlaces
   end
 
   def load
-    places = seek().first 1000
-    puts places
+    places = seek()
     @names = places.collect do |url|
-      process url
+      towns = process url
+      towns.each { |x| puts x }
+      towns
     end
-    .reduce :+
-    puts @names
+    .collect.reduce :+
+    #puts @names
 
   end
 
@@ -31,9 +32,14 @@ class ScrapePlaces
 
   def process(url='http://en.wikipedia.org/wiki/List_of_United_Kingdom_locations:_Co-Col')
     return Nokogiri::HTML(open(url)).css('td.fn.org a').collect do |town|
-       puts town.text.strip
+       text = town.text.strip
+       text.gsub! /\(.*/, ''
+       text.gsub! /disambiguation .*/, ''
+       text.gsub! /citation .*/, ''
+       text
     end
-    .select
+    .select { |x| x.strip != '' }
+
   end
 
 end
