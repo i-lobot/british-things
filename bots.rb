@@ -25,8 +25,8 @@ class MyBot < Ebooks::Bot
 
   def on_startup
     @logic = BritainLogic.new
-    generate()
-    scheduler.every '1h' do
+    #generate()
+    scheduler.every "#{rand(134..168)}m" do
       # Tweet something every 24 hours
       # See https://github.com/jmettraux/rufus-scheduler
       # tweet("hi")
@@ -42,7 +42,7 @@ class MyBot < Ebooks::Bot
 end
 
 # Make a MyBot and attach it to an account
-MyBot.new("updates") do |bot|
+MyBot.new("BritishUpdates") do |bot|
   config = YAML.load_file('secrets.yml')
   bot.access_token = config['access_token']
   bot.access_token_secret = config['access_token_secret']
