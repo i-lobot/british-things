@@ -18,7 +18,7 @@ class BritainLogic
   def generate
     text=""
     which = rand(0..1)
-    until text != "" and text.length <= 140
+    until text != "" and text.length <= 280
       if which==0
         text = marriage
       else
